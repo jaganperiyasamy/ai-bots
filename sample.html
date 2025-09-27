@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Bot Academy - Placement Training Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="sample_javascript.js">
+    <link rel="stylesheet" href="sample_css.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-robot"></i>
+                <span>AI Bot Academy</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#marketplace" class="nav-link">Marketplace</a>
+                <a href="#dashboard" class="nav-link">Dashboard</a>
+                <a href="#about" class="nav-link">About</a>
+            </div>
+            <div class="nav-actions">
+                <button class="btn-secondary">Sign In</button>
+                <button class="btn-primary">Get Started</button>
+            </div>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Master Your <span class="gradient-text">Placement Interviews</span> with AI-Powered Training
+                </h1>
+                <p class="hero-description">
+                    Rent specialized AI bots trained by top companies to practice interviews, 
+                    improve your skills, and land your dream job. Customized training for every placement criteria.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn-primary btn-large">
+                        <i class="fas fa-play"></i>
+                        Start Training Now
+                    </button>
+                    <button class="btn-outline btn-large">
+                        <i class="fas fa-info-circle"></i>
+                        Learn More
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">AI Bots</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">10K+</span>
+                        <span class="stat-label">Students</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-label">Success Rate</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="bot-showcase">
+                    <div class="bot-card featured">
+                        <div class="bot-avatar">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Google Interview Bot</h3>
+                        <p>Technical & Behavioral</p>
+                        <div class="bot-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>4.9</span>
+                        </div>
+                    </div>
+                    <div class="bot-card">
+                        <div class="bot-avatar">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Microsoft Bot</h3>
+                        <p>System Design</p>
+                    </div>
+                    <div class="bot-card">
+                        <div class="bot-avatar">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Amazon Bot</h3>
+                        <p>Leadership</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketplace Section -->
+    <section id="marketplace" class="marketplace">
+        <div class="container">
+            <div class="section-header">
+                <h2>Choose Your Training Bot</h2>
+                <p>Select from our curated collection of AI bots trained by industry experts</p>
+            </div>
+            
+            <div class="marketplace-filters">
+                <div class="filter-group">
+                    <label>Company</label>
+                    <select id="companyFilter">
+                        <option value="">All Companies</option>
+                        <option value="google">Google</option>
+                        <option value="microsoft">Microsoft</option>
+                        <option value="amazon">Amazon</option>
+                        <option value="meta">Meta</option>
+                        <option value="apple">Apple</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Skill Level</label>
+                    <select id="levelFilter">
+                        <option value="">All Levels</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Category</label>
+                    <select id="categoryFilter">
+                        <option value="">All Categories</option>
+                        <option value="technical">Technical</option>
+                        <option value="behavioral">Behavioral</option>
+                        <option value="system-design">System Design</option>
+                        <option value="leadership">Leadership</option>
+                    </select>
+                </div>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search bots..." id="searchInput">
+                </div>
+            </div>
+
+            <div class="bots-grid" id="botsGrid">
+                <!-- Bot cards will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat Interface Modal -->
+    <div id="chatModal" class="modal">
+        <div class="modal-content chat-modal">
+            <div class="chat-header">
+                <div class="bot-info">
+                    <div class="bot-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div>
+                        <h3 id="chatBotName">Bot Name</h3>
+                        <span class="bot-status online">Online</span>
+                    </div>
+                </div>
+                <div class="chat-actions">
+                    <button class="btn-icon" title="Settings">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                    <button class="btn-icon" id="closeChat">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>Hello! I'm your AI training bot. I'm here to help you prepare for your placement interviews. What would you like to practice today?</p>
+                        <span class="message-time">Just now</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input">
+                <div class="input-group">
+                    <input type="text" id="messageInput" placeholder="Type your message...">
+                    <button id="sendMessage" class="btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="quick-actions">
+                    <button class="quick-btn" data-message="Start a mock interview">Mock Interview</button>
+                    <button class="quick-btn" data-message="Help me with technical questions">Technical Q&A</button>
+                    <button class="quick-btn" data-message="Practice behavioral questions">Behavioral</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="dashboard">
+        <div class="container">
+            <div class="section-header">
+                <h2>Your Training Dashboard</h2>
+                <p>Track your progress and manage your active training sessions</p>
+            </div>
+            
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Active Sessions</h3>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="session-list">
+                        <div class="session-item">
+                            <div class="session-info">
+                                <h4>Google Technical Bot</h4>
+                                <p>Started 2 hours ago</p>
+                            </div>
+                            <div class="session-actions">
+                                <button class="btn-primary btn-small">Continue</button>
+                                <button class="btn-icon"><i class="fas fa-pause"></i></button>
+                            </div>
+                        </div>
+                        <div class="session-item">
+                            <div class="session-info">
+                                <h4>Microsoft System Design</h4>
+                                <p>Started 1 day ago</p>
+                            </div>
+                            <div class="session-actions">
+                                <button class="btn-primary btn-small">Continue</button>
+                                <button class="btn-icon"><i class="fas fa-pause"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Progress Overview</h3>
+                    </div>
+                    <div class="progress-stats">
+                        <div class="progress-item">
+                            <div class="progress-info">
+                                <span>Technical Skills</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-info">
+                                <span>Behavioral Skills</span>
+                                <span>72%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 72%"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-info">
+                                <span>System Design</span>
+                                <span>60%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 60%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Recent Achievements</h3>
+                    </div>
+                    <div class="achievements">
+                        <div class="achievement">
+                            <div class="achievement-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="achievement-info">
+                                <h4>First Interview</h4>
+                                <p>Completed your first mock interview</p>
+                            </div>
+                        </div>
+                        <div class="achievement">
+                            <div class="achievement-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="achievement-info">
+                                <h4>5-Star Rating</h4>
+                                <p>Received excellent feedback</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Why Choose AI Bot Academy?</h2>
+                    <p>We partner with top tech companies to create specialized AI training bots that mirror real interview experiences. Our platform offers personalized, scalable training solutions for students preparing for placements.</p>
+                    
+                    <div class="features">
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>AI-Powered Training</h3>
+                                <p>Advanced AI bots trained on real company interview patterns</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>24/7 Availability</h3>
+                                <p>Practice anytime, anywhere with our always-available bots</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Progress Tracking</h3>
+                                <p>Detailed analytics and progress reports for continuous improvement</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <i class="fas fa-users"></i>
+                            <h3>50+</h3>
+                            <p>Partner Companies</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h3>10K+</h3>
+                            <p>Students Trained</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-handshake"></i>
+                            <h3>95%</h3>
+                            <p>Placement Success</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-clock"></i>
+                            <h3>24/7</h3>
+                            <p>Available Training</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i class="fas fa-robot"></i>
+                        <span>AI Bot Academy</span>
+                    </div>
+                    <p>Empowering students with AI-driven placement training solutions.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="#marketplace">Marketplace</a></li>
+                        <li><a href="#dashboard">Dashboard</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AI Bot Academy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="sample_javascript.js"></script>
+</body>
+</html>
